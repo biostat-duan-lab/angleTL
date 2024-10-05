@@ -1,0 +1,21 @@
+Package: angleTL
+Type: Package
+Title: Angle-based Transfer Learning Methods using Summary Statistics
+Version: 0.1.0
+Author: Yi Han
+Maintainer: Yi Han <yhan.hanyi@gmail.com>
+Description: Transfer learning enhances the performance of a target model by leveraging data from related source populations. In this work, we consider a practical setting where only the parameter estimates of the pre-trained source models are accessible. We propose a novel flexible angle-based transfer learning (angleTL) method, which leverages the concordance between the source and the target model parameters. This package implements the algorithms proposed in <https://arxiv.org/abs/2210.12759>.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    Rcpp (>= 1.0.13), 
+    RcppArmadillo,
+    stats,
+    pROC,
+    glmnet
+LinkingTo: Rcpp, RcppArmadillo
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+RoxygenNote: 7.2.2
