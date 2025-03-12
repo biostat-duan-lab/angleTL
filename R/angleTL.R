@@ -22,6 +22,19 @@ angleTL <- function(X, y, w.src) {
     y_type = "continuous"
     family_type = "gaussian"
   }
+  
+  if (!(is.matrix(w.src) || is.vector(w.src))) {
+    stop("Error: w.src must be either a numeric matrix or a vector.")
+  }
+  
+  if (!is.numeric(w.src)) {
+    stop("Error: w.src must be numeric.")
+  }
+  
+  # If w.src is a vector, convert it to a one-column matrix.
+  if (is.vector(w.src)) {
+    w.src <- matrix(w.src, ncol = 1)
+  }
 
   # Normalize source weights
   if (ncol(w.src) != 1) {
@@ -32,7 +45,7 @@ angleTL <- function(X, y, w.src) {
     w_weight = (eigen(G)$vectors[, 1])^2
     w.src = w.src_unit %*% w_weight
   } else {
-    w.src = w.src[[1]]
+    w.src <- w.src[, 1]
   }
 
   # Use glmnet with appropriate family type
